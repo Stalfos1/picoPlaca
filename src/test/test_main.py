@@ -14,3 +14,13 @@ from src.main import day_date
 )
 def test_day_date(date,day):
     assert day_date(date)==day
+    
+@pytest.mark.parametrize(
+     "date,day",
+    [
+        ('32/1/0900','Thursday'),
+        ('22/6/-0020','Thursday')
+    ]
+)    
+def test_negative_day_date(date,day):
+    assert not (date)==day
