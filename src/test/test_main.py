@@ -1,6 +1,6 @@
 import pytest
 import datetime
-from src.main import day_date, pico_placa_detector, is_vehicle_allowed
+from src.main import day_date, pico_placa_detector, is_vehicle_allowed, plate_verificator
 
 @pytest.mark.parametrize(
     "date,day",
@@ -44,3 +44,21 @@ def test_negative_day_date(date, expected_exception):
 )   
 def test_pico_placa_detector(plate,date,time,result):
     assert pico_placa_detector(plate,date,time)==result
+    
+    
+@pytest.mark.parametrize(
+    "plate, result",
+    [
+        ("ABC123", True),
+        ("DEF7890", True), 
+        ("123ABC", False), 
+        ("ABCD", False),  
+        ("ABCDEFGHI", False), 
+        ("ABC12345", False),  
+        ("123ABCX", False), 
+        ("@ABC", False),
+        ("2154ABC", False)  
+    ]
+)
+def test_plate_verificator(plate, result):
+    assert plate_verificator(plate) == result
