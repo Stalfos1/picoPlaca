@@ -7,7 +7,9 @@ The Pico y Placa Verifier is a Python application designed to determine if a veh
 Key Features:
 
 License Plate Validation: Ensures that the license plate adheres to the correct format, consisting of 6 or 7 characters with the first 3 being letters and the remaining characters being numbers.
+
 Day of the Week Calculation: Accurately determines the day of the week from the provided date.
+
 Pico y Placa Rule Enforcement: Implements the Pico y Placa restrictions, prohibiting vehicles with specific last digits from circulating on corresponding days during restricted hours.
 
 Pico y Placa Restrictions
