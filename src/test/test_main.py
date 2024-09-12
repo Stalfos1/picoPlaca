@@ -17,14 +17,17 @@ def test_day_date(date,day):
     assert day_date(date)==day
     
 @pytest.mark.parametrize(
-     "date,day",
+    "date,expected_exception",
     [
-        ('32/1/0900','Thursday'),
-        ('22/6/-0020','Thursday')
+        ('32/1/0900', ValueError),
+        ('22/6/-0020', ValueError),
+        ('5/3/0000', ValueError),
+        ('13/15/2020', ValueError)
     ]
-)    
-def test_negative_day_date(date,day):
-    assert not day_date(date)==day
+)
+def test_negative_day_date(date, expected_exception):
+    with pytest.raises(expected_exception):
+        day_date(date)
     
 
 
@@ -32,11 +35,11 @@ def test_negative_day_date(date,day):
      "plate,date,time,result",
     [
         ("pbx1023", "10/09/2024", datetime.time(8, 30), False),
-        ("abc1234", "12/12/2023", datetime.time(15, 45),True),
+        ("abc1234", "12/12/2023", datetime.time(16, 45),False),
         ("xyz5678", "01/01/2025", datetime.time(23, 59),True),
         ("pqr9876", "05/07/2024", datetime.time(10, 15),True),
         ("uvw7654", "09/03/2024", datetime.time(0, 0),True),
-        ("def3210", "22/10/2024", datetime.time(17, 30),True)
+        ("def3210", "18/10/2024", datetime.time(17, 30),False)
     ]
 )   
 def test_pico_placa_detector(plate,date,time,result):
