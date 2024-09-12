@@ -42,37 +42,20 @@ def pico_placa_detector (plate,date,time):
     afternoon_pico_placa_end=datetime.time(19,30)
     
     day_week=day_date(date)
+    print(day_week)
     if not (morning_pico_placa_start <= time <= morning_pico_placa_end or  afternoon_pico_placa_start <= time <= afternoon_pico_placa_end):
         return True
     else:
         return is_vehicle_allowed(day_week,plate)
 
 
-""""
-plate='xyz5678'
-# day/month/year/
-date='10/9/2024'
-# 24:00 hours format
-time= datetime.time(8, 30)
-print(time)
-print(plate[-1])
-
-
-
-print( day_date(date) )
-
-print(pico_placa_detector(plate,date,time))
-
-
-"""
-
 def plate_verificator(plate):
-    # Validar si la placa tiene entre 6 y 7 caracteres
+    # Verifies if the plate have 6 or 7 characters
     if len(plate) not in (6, 7):
         print("Plate incorrect: must have six or seven characters.")
         return False
     
-    # Usar una expresión regular para verificar si los 3 primeros son letras y los últimos 3 o 4 son números
+    # Regular expression to validate the plate begins with exactly three letters followed by digits
     if re.match(r"^[A-Za-z]{3}\d{3,4}$", plate):
         print("Plate is correct.")
         return True
@@ -80,8 +63,9 @@ def plate_verificator(plate):
         print("Plate incorrect: The first 3 characters must be letters and the rest numbers")
         return False
 
-def enter_data():
 
+def enter_data():
+    print('')
     plate = input("Enter a vehicle plate (example: ABC1234): ")
     if not(plate_verificator(plate)):
       return
@@ -106,7 +90,28 @@ def enter_data():
         print("The car ISN'T allowed to circulate")
 
 
+welcome_msg="""
+           Welcome to the Pico y Placa Verifier!
+
+To check if your vehicle is allowed to circulate on a specific day, please enter the following information:
+
+* **License Plate:** Enter your vehicle's license plate number.
+* **Date:** Select a date.
+* **Time:** Select the time.
+
+**Important Note:** Between 7:00-9:30 and 16:00-19:30
+Vehicles with license plates ending in the following digits are restricted on their corresponding days:
+
+* Monday: 1, 2
+* Tuesday: 3, 4
+* Wednesday: 5, 6
+* Thursday: 7, 8
+* Friday: 9, 0
+          """
+
+
 if __name__ == "__main__":
+    print(welcome_msg)
     while True:
         enter_data()
         
