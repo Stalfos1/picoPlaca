@@ -4,14 +4,20 @@
 
 The Pico y Placa Verifier is a Python application designed to determine if a vehicle is allowed to circulate on a specific day and time based on the Pico y Placa restrictions of the Quito city. The system verifies the license plate format, calculates the day of the week, and checks for any restrictions based on the last digit of the license plate and the specified time.
 
+## Git Versions
+This repository utilizes two branches to manage code development and releases:
+
+- main: Dedicated to stable releases of the code.
+- develop: Dedicated to ongoing development and testing activities related to the exercise.
+
 ## **Key Features:**
 
 
-License Plate Validation: Ensures that the license plate adheres to the correct format, consisting of 6 or 7 characters with the first 3 being letters and the remaining characters being numbers.
+- License Plate Validation: Ensures that the license plate adheres to the correct format, consisting of 6 or 7 characters with the first 3 being letters and the remaining characters being numbers.
 
-Day of the Week Calculation: Accurately determines the day of the week from the provided date.
+- Day of the Week Calculation: Accurately determines the day of the week from the provided date.
 
-Pico y Placa Rule Enforcement: Implements the Pico y Placa restrictions, prohibiting vehicles with specific last digits from circulating on corresponding days during restricted hours.
+- Pico y Placa Rule Enforcement: Implements the Pico y Placa restrictions, prohibiting vehicles with specific last digits from circulating on corresponding days during restricted hours.
 
 
 ## **Pico y Placa Restrictions**
