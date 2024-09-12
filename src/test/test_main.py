@@ -62,3 +62,19 @@ def test_pico_placa_detector(plate,date,time,result):
 )
 def test_plate_verificator(plate, result):
     assert plate_verificator(plate) == result
+    
+    
+
+@pytest.mark.parametrize(
+     "plate,date,time,result",
+    [
+        ("pbx1023", "1/1/2024", datetime.time(8, 30), True),
+        ("abc1234", "1/1/2003", datetime.time(16, 45),True),
+        ("xyz5678", "29/03/2025", datetime.time(23, 59),True),
+        ("pqr9876", "29/03/2044", datetime.time(10, 15),True),
+        ("uvw7654", "11/10/2004", datetime.time(0, 0),True),
+        ("def3210", "11/10/2017", datetime.time(17, 30),True)
+    ]
+)   
+def test_holiday_pico_placa_detector(plate,date,time,result):
+    assert pico_placa_detector(plate,date,time)==result
