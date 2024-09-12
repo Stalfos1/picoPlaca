@@ -32,8 +32,28 @@ Thursday: 7, 8
 
 Friday: 9, 0
 ```
+> [!IMPORTANT]
+> On Holidays all vehicles are allowed, regardless of their plate number
 
+[Holidays on Quito, Ecuador:](https://www.jezl-auditores.com/index.php/tributario/126-feriados-ecuador-2024)
+```
+    '01/01'   New Year's Day
+    '12/02'   Carnival
+    '13/02'   Carnival
+    '29/03'   Good Friday
+    '03/05'   Labor Day
+    '24/05'   Pichincha Battle
+    '28/07'   National Holiday
+    '29/07'   National Holiday
+    '09/08'   First Cry of Independece
+    '11/10'   Independence of Guayaquil
+    '01/11'   All Souls Day
+    '04/11'   Independence of Cuenca
+    '06/12'   Foundation of Quito
+    '24/12'   Christmas Eve
+    '25/12'   Christmas
 
+```
 ## **Requirements**
 
 Python 3.x
