@@ -1,5 +1,5 @@
 import datetime
-
+import re
 
 def day_date(date):
   # String to datetime
@@ -66,12 +66,27 @@ print(pico_placa_detector(plate,date,time))
 
 """
 
+def plate_verificator(plate):
+    # Validar si la placa tiene entre 6 y 7 caracteres
+    if len(plate) not in (6, 7):
+        print("Plate incorrect: must have six or seven characters.")
+        return False
+    
+    # Usar una expresión regular para verificar si los 3 primeros son letras y los últimos 3 o 4 son números
+    if re.match(r"^[A-Za-z]{3}\d{3,4}$", plate):
+        print("Plate is correct.")
+        return True
+    else:
+        print("Plate incorrect: The first 3 characters must be letters and the rest numbers")
+        return False
 
 def enter_data():
 
     plate = input("Enter a vehicle plate (example: ABC1234): ")
+    if not(plate_verificator(plate)):
+      return
+
     date_input = input("Enter a date (format DD/MM/YYYY): ")
-    
     try:
         date = datetime.datetime.strptime(date_input, "%d/%m/%Y").strftime('%d/%m/%Y')
     except ValueError:
@@ -79,7 +94,6 @@ def enter_data():
         return
     
     time_input = input("Enter the time (format HH:MM, 24 hours): ")
-    
     try:
         time = datetime.datetime.strptime(time_input, "%H:%M").time()
     except ValueError:
