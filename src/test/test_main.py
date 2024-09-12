@@ -78,3 +78,4 @@ def test_plate_verificator(plate, result):
 )   
 def test_holiday_pico_placa_detector(plate,date,time,result):
     assert pico_placa_detector(plate,date,time)==result
+    
