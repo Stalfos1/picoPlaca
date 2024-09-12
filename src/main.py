@@ -1,6 +1,23 @@
 import datetime
 import re
 
+holidays = [
+    '01/01',  # New Year's Day
+    '12/02',  # Carnival
+    '13/02',  # Carnival
+    '29/03',  # Good Friday
+    '03/05',  # Labor Day
+    '24/05',  # Pichincha Battle
+    '09/08',  # First Cry of Independece
+    '11/10',  # Independence of Guayaquil
+    '01/11',  # All Souls Day
+    '04/11',  # Independence of Cuenca
+    '06/12',  # Foundation of Quito
+    '24/12',  # Christmas Eve
+    '25/12'   # Christmas
+]
+
+
 def day_date(date):
   # String to datetime
   date_datetime = datetime.datetime.strptime(date, '%d/%m/%Y')
@@ -12,6 +29,13 @@ def day_date(date):
   day = days_week[number_day_week]
 
   return day
+
+
+def is_holiday(date):
+    # Extract day and month from the date
+    day_month = datetime.datetime.strptime(date, '%d/%m/%Y').strftime('%d/%m')
+    return day_month in holidays
+
 
 
 def is_vehicle_allowed(day_week, plate):
@@ -33,7 +57,6 @@ def is_vehicle_allowed(day_week, plate):
   return True
 
 
-
 def pico_placa_detector (plate,date,time):
     morning_pico_placa_start=datetime.time(7,0)
     morning_pico_placa_end=datetime.time(9,30)
@@ -43,6 +66,11 @@ def pico_placa_detector (plate,date,time):
     
     day_week=day_date(date)
     print(day_week)
+    
+    if is_holiday(date):
+        print('On Holidays all cars are allowed, regardless of their plate number')
+        return True  # Vehicle is allowed to circulate on holidays
+    
     if not (morning_pico_placa_start <= time <= morning_pico_placa_end or  afternoon_pico_placa_start <= time <= afternoon_pico_placa_end):
         return True
     else:
